@@ -1,0 +1,90 @@
+COMANDOS CONSOLA TERMINAL
+DIR. El comando DIR muestra todos los archivos y carpetas / directorios de la ruta en la que estás actualmente. Ahora bien, si tecleas DIR seguido del nombre de un directorio, entonces puedes ver el contenido de ese directorio.
+CD. DESPLAZAMIENTO DE RUTAS DENTRO DEL SISTEMA OPERATIVO
+CD .. para volver hacia atras de la ruta 
+MKDIR. para crear carpetas
+touch GITPRUEV.py = para crear un archivo vario en la carpeta 
+
+
+
+COMANDOS GIT
+git config --global user.name "KevinGabriel" = para que pueda entrar cualquier persona o solo yo por usuario y correo
+git config --global user.mail "kevincito789xd@gmail.com"= lo mismo pero para correo electronico
+git init = para trabajar en un directorio o en una carpeta de control de versiones
+
+la master es una rama llamada main donde todo comienza osea la rama principal
+ git branch -m main = para cambiar el nombre de la rama principal por ejemplo a main 
+git status = para ver el estado del repositorio , para ver que esta pasando con los ficheros que estan tomando
+git add nombrefichero o . (para seleccionar todos los ficheros) = sirve para guardar o anadir el fichero al repositorio
+
+git commit -m "mi primer commit" = se utiliza para guardar o confirmar los cambios realizados en tu repositorio local. Cada confirmación representa un punto en la historia del proyecto y registra los cambios realizados en los archivos
+ se crea una nueva instantánea (snapshot) con los cambios que han sido agregados o modificados desde la última confirmación. Estas confirmaciones permiten tener un registro histórico detallado de cómo ha evolucionado el proyecto con el tiempo, lo que facilita la colaboración en equipos y permite deshacer cambios si es necesario
+
+git log --graph (para verlo graficamente la rama) = para ver si el git commit se a producido realmente
+informacion que sale
+commit 7b8e6a8a0ceffc765749c698eb85d2d792c0ea25 (HEAD -> main) = numero de identifiacion de commit (Hash)
+Author: KevinGabriel <kevincito789xd@gmail.com>
+Date:   Thu Jul 20 20:43:36 2023 -0700
+
+    Mi primer Commit
+
+git checkout GITPRUEV2.py = nos sirve para regresar atras un commit que tengamos ya guardado 
+
+ git config --global alias.tree "log --graph --decorate --all --oneline" = con el alias guardas un setencia de codigo directamente solo para ocuparlo con el alias dado ejemplo : git tree 
+
+git ignore (touch .gitignore : para crear el fichero ignorante) = para ignorar fichero y no me este dando ese desemplore para generar un git add en el git status
+git diff = nos muestra los cambios realizados al fichero y no los muestra lo que estaba antes con respecto a lo que estaba ahora sin necesidad de hacer una fotografia todo esto mostrado desde la propia consola senalando lo que se cambio y lo que antes estaba con un - y +
+
+DESPLAZAMIENTO ENTRE RAMAS EN GIT
+
+git log = para ver el hash del commit al que queremos acceder
+luego 
+git checkout +hash(7b8e6a8a0ceffc765749c698eb85d2d792c0ea25
+) = de esta manera podemos desplazarnos a la rama que queramos
+
+si no nos deje revisar con 
+git status = para ver si hay un problema de modificacion o otra cosas en el fichero
+y si hay modificacion, en caso de que queramos hacer
+git checkout +nombrearhivo (git.py) = para volver al commit del archivo y borrar las modificaciones realizadas 
+git checkout HEAD = para indicar cual es la cabeza del proyecto que queremos de verdad hacer por temas x
+el head nos muestra exactamente en donde nos encontramos 
+
+git reset --hard (hash 1d83438) = hace que nos situemos en un punto y reseteemos o eliminemos lo que tenia despues de ese commit osea las siguientes ramas
+
+git reflog = es el comando para ver el historial de acciones hechas en git por si la emos cagado y por el git reset hard queremos recuperar nuestros ficheros
+
+ git reset --hard (hash 1d83438) = y con el mismo comando podemos volver de nuevo al mismo punto de partida con el head y el main totalmente alineados
+ 
+ git tag nombretag = nos sirve para poner una etiqueta hasta donde hemos llegado de comitear segun nuestra propias  versiones osea hasta donde hemos usado tal cantidad de cambios o commit para  crear una version de algo.
+ git checkout tags/nombretag = sirve para moverse entre etiquetas igual que con hashs de commits
+
+git branch nombrerama = para crear ramas en git
+git switch login = para moverse de a otra rama ejemplo de la main a una login
+
+git merge nombrerama = nos sirve para traer datos de alguna rama a la nuestra para no perder la sintonia del trabajo o combinacion de ramas
+
+conflictos en git
+si se modifica una linea de codigo de un fichero en una rama ejemplo login al haber hecho merjeo de la otra rama y el otro companero modifica la misma linea de codigo en su rama todo haciendolo por ambas partes un commit
+al querer hacer un merjeo por ambas partes no se podra entrara en conflicto porque las modificaciones son en la misma linea por lotanto
+git no diferenciara cual es la proritaria por eso es consejable agregar nuevas lineas de codigo si de verdad se necesita hacerlo y dejar establecidas las que ya estan
+para que sea solo modificadas por el usuario que las creo.
+
+git stash = nos ayuda a cuando de repente necesitamos movernos a otra rama o commit pero el codigo que tenemos no podemos hacerle un commit ya que esta a medias
+este comando nos ayuda a guardarlo como un commit pero solo para ser temporalmente mientras volvemos
+git stash list = para ver la lista de los stash
+git stash pop = para volver a tener tu codigo a medias que dejaste stasheado
+git stash drop = para eliminar un stash
+
+REINTEGRACION DE UNA RAMA
+para integrar una rama extra a la principal siempre usaremos git merge pero en la principal
+
+
+git branch --d login = este comando elimina una rama ya que una vez sea integrada en la principal ya no la necesitamos y por ende tienden a ser eliminadas
+pero si se pueden recuperar los codigos con los commits gracias a git reflog y git checkout
+
+COMANDOS GIT CON GITHUB
+git remote add origin https://github.com/KevDev123/GITPRUEV.git = para conectarnos remotamente de git a github
+git push -u origin main = para subir tu repositorio local al remoto de github
+git fetch = se descarga el historial sin los cambios en local
+git pull = se descarga el historial y tambien los cambios en local
+git clone = para clonar el proyecto con sus versiones en tu nueva maquina o nueva carpeta etc. osea una copia sincronizada del proyecto
